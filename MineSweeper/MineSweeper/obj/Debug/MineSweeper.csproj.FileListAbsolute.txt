@@ -1,0 +1,9 @@
+C:\Users\Ryan\Source\Repos\Ryan-Porter66\CSC260-FinalProject-MineSweeper\MineSweeper\MineSweeper\bin\Debug\MineSweeper.exe.config
+C:\Users\Ryan\Source\Repos\Ryan-Porter66\CSC260-FinalProject-MineSweeper\MineSweeper\MineSweeper\bin\Debug\MineSweeper.exe
+C:\Users\Ryan\Source\Repos\Ryan-Porter66\CSC260-FinalProject-MineSweeper\MineSweeper\MineSweeper\bin\Debug\MineSweeper.pdb
+C:\Users\Ryan\Source\Repos\Ryan-Porter66\CSC260-FinalProject-MineSweeper\MineSweeper\MineSweeper\obj\Debug\MineSweeper.csprojAssemblyReference.cache
+C:\Users\Ryan\Source\Repos\Ryan-Porter66\CSC260-FinalProject-MineSweeper\MineSweeper\MineSweeper\obj\Debug\MineSweeper.Properties.Resources.resources
+C:\Users\Ryan\Source\Repos\Ryan-Porter66\CSC260-FinalProject-MineSweeper\MineSweeper\MineSweeper\obj\Debug\MineSweeper.csproj.GenerateResource.cache
+C:\Users\Ryan\Source\Repos\Ryan-Porter66\CSC260-FinalProject-MineSweeper\MineSweeper\MineSweeper\obj\Debug\MineSweeper.csproj.CoreCompileInputs.cache
+C:\Users\Ryan\Source\Repos\Ryan-Porter66\CSC260-FinalProject-MineSweeper\MineSweeper\MineSweeper\obj\Debug\MineSweeper.exe
+C:\Users\Ryan\Source\Repos\Ryan-Porter66\CSC260-FinalProject-MineSweeper\MineSweeper\MineSweeper\obj\Debug\MineSweeper.pdb
