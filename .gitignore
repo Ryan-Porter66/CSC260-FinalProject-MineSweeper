@@ -4,3 +4,5 @@
 
 /.vs
 /MineSweeper/.vs/MineSweeper/v16
+/MineSweeper/MineSweeper/bin/Debug
+/MineSweeper/MineSweeper/obj/Debug
