@@ -8,13 +8,17 @@ namespace MineSweeper.GridCells.Cells
 {
     class Mine : Cell
     {
-		public Mine(int x, int y, Grid owner) : base(x, y, owner)
+        #region Constructor
+        public Mine(int x, int y, Grid owner) : base(x, y, owner)
 		{
 		}
-
-		public override void RevealClick()
+        #endregion
+        #region Methods
+        public override void RevealClick()
 		{
-			throw new NotImplementedException();
-		}
-	}
+            this.Text = "M";
+            this.Owner.GameLost();
+        }
+        #endregion
+    }
 }
