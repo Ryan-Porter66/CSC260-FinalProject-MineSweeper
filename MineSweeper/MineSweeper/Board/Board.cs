@@ -17,19 +17,21 @@ namespace MineSweeper
 {
     public partial class Board : Form
     {
-		private Grid _cellGrid;
+        #region Fields
+        private Grid _grid;
 		IDifficulty _gameMode;
 		private int _numFlags;
-
-		public Grid CellGrid
+        #endregion
+        #region Properties
+        public Grid CellGrid
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._grid;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._grid = value;
 			}
 		}
 
@@ -37,11 +39,11 @@ namespace MineSweeper
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._gameMode;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._gameMode = value;
 			}
 		}
 
@@ -49,20 +51,45 @@ namespace MineSweeper
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._numFlags;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._numFlags = value;
 			}
 		}
-
-		public Board()
+        #endregion
+        #region Constructor
+        public Board()
 		{
+			this.GameMode = new Easy();
 			InitializeComponent();
 		}
+        #endregion
+        #region Board Buttons
+        private void easyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
-		private void StartGame()
+        }
+        private void intermediateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void expertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void highScoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void FlagsBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+        #region Methods
+        private void StartGame()
 		{
 			throw new NotImplementedException();
 		}
@@ -71,5 +98,7 @@ namespace MineSweeper
 		{
 			throw new NotImplementedException();
 		}
-	}
+        #endregion
+
+    }
 }
