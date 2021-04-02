@@ -14,9 +14,10 @@ namespace MineSweeper.GridCells
         private Board _board;
 		IDifficulty _gameMode;
 		Cell[,] _grid;
-        #endregion
-        #region Properties
-        public Board board
+		public const int xDefaultLoc = 15, yDefaultLoc = 50, spaceBetweenButtons = 30;
+		#endregion
+		#region Properties
+		public Board Board
 		{
 			get
 			{
@@ -55,7 +56,9 @@ namespace MineSweeper.GridCells
         #region Constructor
         public Grid(Board board, IDifficulty difficulty)
 		{
-			throw new NotImplementedException();
+			this.Board = board;
+			this.GameMode = difficulty;
+			this.GridOfCells = new Cell[GameMode.Width, GameMode.Height];
 		}
         #endregion
         #region Methods

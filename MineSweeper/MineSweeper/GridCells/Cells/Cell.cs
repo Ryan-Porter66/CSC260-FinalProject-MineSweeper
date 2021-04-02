@@ -8,21 +8,24 @@ namespace MineSweeper.GridCells.Cells
 {
 	public abstract class Cell
 	{
-		bool _flagged;
+        #region Fields
+        bool _flagged;
 		int _locationX;
 		int _locationY;
 		Grid _owner;
 		bool _uncovered;
-
-		public bool Flagged
+		public const int xDefaultLoc = 15, yDefaultLoc = 50, spaceBetweenButtons = 30;
+        #endregion
+        #region Properties
+        public bool Flagged
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._flagged;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._flagged = value;
 			}
 		}
 
@@ -30,11 +33,11 @@ namespace MineSweeper.GridCells.Cells
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._locationX;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._locationX = value;
 			}
 		}
 
@@ -42,11 +45,11 @@ namespace MineSweeper.GridCells.Cells
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._locationY;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._locationY = value;
 			}
 		}
 
@@ -54,11 +57,11 @@ namespace MineSweeper.GridCells.Cells
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._owner;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._owner = value;
 			}
 		}
 
@@ -66,20 +69,22 @@ namespace MineSweeper.GridCells.Cells
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._uncovered;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._uncovered = value;
 			}
 		}
-
-		public Cell(int x, int y, Grid owner)
+        #endregion
+        #region Constructor
+        public Cell(int x, int y, Grid owner)
 		{
 			throw new NotImplementedException();
 		}
-
-		public void Click()
+        #endregion
+        #region Methods
+        public void Click()
 		{
 			throw new NotImplementedException();
 		}
@@ -90,5 +95,6 @@ namespace MineSweeper.GridCells.Cells
 		}
 
 		public abstract void RevealClick();
-	}
+        #endregion
+    }
 }
