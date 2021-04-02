@@ -8,25 +8,29 @@ namespace MineSweeper.GridCells.Cells
 {
     class Number : Cell
     {
-		int _numMines;
-
-		public int NumMines
+        #region Fields
+        int _numMines;
+        #endregion
+        #region Properties
+        public int NumMines
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._numMines;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._numMines = value;
 			}
 		}
-
-		public Number(int x, int y, Grid owner) : base(x, y, owner)
+        #endregion
+        #region Constructor
+        public Number(int x, int y, Grid owner) : base(x, y, owner)
 		{
 		}
-
-		private void DisplayNeighbors()
+        #endregion
+        #region Methods
+        private void DisplayNeighbors()
 		{
 			throw new NotImplementedException();
 		}
@@ -45,5 +49,6 @@ namespace MineSweeper.GridCells.Cells
 		{
 			throw new NotImplementedException();
 		}
-	}
+        #endregion
+    }
 }
