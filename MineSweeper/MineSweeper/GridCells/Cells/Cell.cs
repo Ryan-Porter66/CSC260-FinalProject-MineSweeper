@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace MineSweeper.GridCells.Cells
 {
-	public abstract class Cell
+	public abstract class Cell : Button
 	{
         #region Fields
         bool _flagged;
@@ -14,10 +16,10 @@ namespace MineSweeper.GridCells.Cells
 		int _locationY;
 		Grid _owner;
 		bool _uncovered;
-		public const int xDefaultLoc = 15, yDefaultLoc = 50, spaceBetweenButtons = 30;
-        #endregion
-        #region Properties
-        public bool Flagged
+		public const int buttonSize = 30;
+		#endregion
+		#region Properties
+		public bool Flagged
 		{
 			get
 			{
@@ -80,18 +82,24 @@ namespace MineSweeper.GridCells.Cells
         #region Constructor
         public Cell(int x, int y, Grid owner)
 		{
-			throw new NotImplementedException();
+			this._locationX = x;
+			this._locationY = y;
+			this._owner = owner;
+			this._flagged = this._uncovered = false;
+			//https://naikrahul.wordpress.com/tricks-tips/c-how-to-add-click-event-for-dynamically-created-buttons/
+			this.Size = new Size(buttonSize, buttonSize);
+			this.MouseDown += new MouseEventHandler(this.Owner.Board.ClickCell);
+			this.Owner.Board.Controls.Add(this);
+			this.FlatStyle = FlatStyle.Flat;
+			this.BackColor = Color.White;
+			//https://stackoverflow.com/questions/14354922/remove-blue-outlining-of-buttons
+			this.SetStyle(ControlStyles.Selectable, false);
 		}
         #endregion
         #region Methods
-        public void Click()
+		internal void FlagClick()
 		{
-			throw new NotImplementedException();
-		}
 
-		public void FlagClick()
-		{
-			throw new NotImplementedException();
 		}
 
 		public abstract void RevealClick();

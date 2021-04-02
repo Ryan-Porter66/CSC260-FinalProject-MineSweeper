@@ -83,7 +83,7 @@ namespace MineSweeper
         {
 
         }
-        private void FlagsBox_TextChanged(object sender, EventArgs e)
+        internal void FlagsBox_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -94,7 +94,7 @@ namespace MineSweeper
 			throw new NotImplementedException();
 		}
 
-		private void Click_Cell(object Sender, MouseEventArgs e)
+		internal void ClickCell(object Sender, MouseEventArgs e)
 		{
 			throw new NotImplementedException();
 		}
