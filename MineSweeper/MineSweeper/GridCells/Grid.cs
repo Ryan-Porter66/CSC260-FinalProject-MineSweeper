@@ -10,19 +10,21 @@ namespace MineSweeper.GridCells
 {
     public class Grid
     {
-		private Board _board;
+        #region Fields
+        private Board _board;
 		IDifficulty _gameMode;
 		Cell[,] _grid;
-
-		public Board board
+        #endregion
+        #region Properties
+        public Board board
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._board;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._board = value;
 			}
 		}
 
@@ -30,11 +32,11 @@ namespace MineSweeper.GridCells
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._gameMode;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._gameMode = value;
 			}
 		}
 
@@ -42,20 +44,22 @@ namespace MineSweeper.GridCells
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return this._grid;
 			}
 			set
 			{
-				throw new NotImplementedException();
+				this._grid = value;
 			}
 		}
-
-		public Grid(Board board, IDifficulty difficulty)
+        #endregion
+        #region Constructor
+        public Grid(Board board, IDifficulty difficulty)
 		{
 			throw new NotImplementedException();
 		}
-
-		internal void CheckWin()
+        #endregion
+        #region Methods
+        internal void CheckWin()
 		{
 			throw new NotImplementedException();
 		}
@@ -84,5 +88,6 @@ namespace MineSweeper.GridCells
 		{
 			throw new NotImplementedException();
 		}
-	}
+        #endregion
+    }
 }
