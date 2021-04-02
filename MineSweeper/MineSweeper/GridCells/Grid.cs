@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace MineSweeper
+namespace MineSweeper.GridCells
 {
-    public partial class Board : Form
+    class Grid
     {
-		private Grid _cellGrid;
+		private Board _board;
 		IDifficulty _gameMode;
-		private int _numFlags;
+		Cell[,] _grid;
 
-		public Grid CellGrid
+		public Board board
 		{
 			get
 			{
@@ -28,7 +24,7 @@ namespace MineSweeper
 			}
 		}
 
-		public IDifficulty GameMode
+		public Difficulty GameMode
 		{
 			get
 			{
@@ -40,7 +36,7 @@ namespace MineSweeper
 			}
 		}
 
-		public int NumFlags
+		public Cell[,] Grid
 		{
 			get
 			{
@@ -52,20 +48,39 @@ namespace MineSweeper
 			}
 		}
 
-		public Board()
-		{
-			InitializeComponent();
-		}
-
-		private void StartGame()
+		public Grid(Board board, Difficulty difficulty)
 		{
 			throw new NotImplementedException();
 		}
 
-		private void Click_Cell(object Sender, MouseEventArgs e)
+		internal void CheckWin()
+		{
+			throw new NotImplementedException();
+		}
+
+		private void DisplayMines()
+		{
+			throw new NotImplementedException();
+		}
+
+		internal void GameLost()
+		{
+			throw new NotImplementedException();
+		}
+
+		internal void GameWon()
+		{
+			throw new NotImplementedException();
+		}
+
+		internal void GridSetUp()
+		{
+			throw new NotImplementedException();
+		}
+
+		internal void SetMines()
 		{
 			throw new NotImplementedException();
 		}
 	}
-}
 }
