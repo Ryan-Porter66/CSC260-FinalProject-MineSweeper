@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MineSweeper.Timer
+namespace MineSweeper.Timers
 {
     class Timer
     {

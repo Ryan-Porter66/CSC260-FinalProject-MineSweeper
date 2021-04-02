@@ -8,9 +8,8 @@ namespace MineSweeper.GridCells.Cells
 {
     class Mine : Cell
     {
-		public Mine(int x, int y, Grid owner)
+		public Mine(int x, int y, Grid owner) : base(x, y, owner)
 		{
-			throw new NotImplementedException();
 		}
 
 		public override void RevealClick()

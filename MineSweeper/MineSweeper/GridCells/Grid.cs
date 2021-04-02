@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MineSweeper.GridCells.Cells;
+using MineSweeper.Difficulty;
 
 namespace MineSweeper.GridCells
 {
-    class Grid
+    public class Grid
     {
 		private Board _board;
 		IDifficulty _gameMode;
@@ -24,7 +26,7 @@ namespace MineSweeper.GridCells
 			}
 		}
 
-		public Difficulty GameMode
+		public IDifficulty GameMode
 		{
 			get
 			{
@@ -36,7 +38,7 @@ namespace MineSweeper.GridCells
 			}
 		}
 
-		public Cell[,] Grid
+		public Cell[,] GridOfCells
 		{
 			get
 			{
@@ -48,7 +50,7 @@ namespace MineSweeper.GridCells
 			}
 		}
 
-		public Grid(Board board, Difficulty difficulty)
+		public Grid(Board board, IDifficulty difficulty)
 		{
 			throw new NotImplementedException();
 		}

@@ -22,9 +22,8 @@ namespace MineSweeper.GridCells.Cells
 			}
 		}
 
-		public Number(int x, int y, Grid owner)
+		public Number(int x, int y, Grid owner) : base(x, y, owner)
 		{
-			throw new NotImplementedException();
 		}
 
 		private void DisplayNeighbors()
