@@ -18,8 +18,9 @@ namespace MineSweeper.Difficulty
 			get;
 		}
 
-		int MineNum
+		int NumMines
 		{
 			get;
 		}
 	}
+}
