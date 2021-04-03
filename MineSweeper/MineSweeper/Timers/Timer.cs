@@ -8,9 +8,15 @@ namespace MineSweeper.Timers
 {
     class Timer
     {
+        #region Methods
         public static int IncreaseTimer(int elapsed)
         {
-            throw new NotImplementedException();
+            if (elapsed < 999)
+            {
+                elapsed++;
+            }
+            return elapsed;
         }
+        #endregion
     }
 }

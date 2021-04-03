@@ -96,8 +96,17 @@ namespace MineSweeper
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-
-        }
+			//https://docs.microsoft.com/en-us/visualstudio/ide/step-6-add-a-timer?view=vs-2019
+			if (this.TimeElapsed < 999)
+			{
+				this.TimeElapsed = Timers.Timer.IncreaseTimer(this.TimeElapsed);
+				TimerLabel.Text = "Time: " + this.TimeElapsed.ToString();
+			}
+			else
+			{
+				this.timer1.Stop();
+			}
+		}
 
         internal void FlagsBox_TextChanged(object sender, EventArgs e)
         {

@@ -115,6 +115,7 @@ namespace MineSweeper
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Board
@@ -145,7 +146,7 @@ namespace MineSweeper
         private System.Windows.Forms.ToolStripMenuItem highScoresToolStripMenuItem;
         private System.Windows.Forms.TextBox FlagsBox;
         private System.Windows.Forms.TextBox TimerLabel;
-        internal System.Windows.Forms.Timer timer1;
+        protected internal System.Windows.Forms.Timer timer1;
     }
 }
 
