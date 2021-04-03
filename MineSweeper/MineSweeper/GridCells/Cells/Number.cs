@@ -30,6 +30,10 @@ namespace MineSweeper.GridCells.Cells
 		}
         #endregion
         #region Methods
+		internal void CalculateMines()
+        {
+
+        }
         private void DisplayNeighbors()
 		{
 			throw new NotImplementedException();

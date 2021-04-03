@@ -21,9 +21,10 @@ namespace MineSweeper
         private Grid _grid;
 		IDifficulty _gameMode;
 		private int _numFlags;
-        #endregion
-        #region Properties
-        public Grid CellGrid
+		public const int buttonSize = 30, xDefaultLoc = 20, yDefaultLoc = 50, spaceBetweenButtons = 30;
+		#endregion
+		#region Properties
+		public Grid CellGrid
 		{
 			get
 			{
@@ -58,12 +59,15 @@ namespace MineSweeper
 				this._numFlags = value;
 			}
 		}
-        #endregion
-        #region Constructor
-        public Board()
+		public bool FirstClick { get; set; }
+		public int TimeElapsed { get; private set; }
+		#endregion
+		#region Constructor
+		public Board()
 		{
-			this.GameMode = new Easy();
 			InitializeComponent();
+			this.GameMode = new Easy();
+			this.StartGame();
 		}
         #endregion
         #region Board Buttons
@@ -91,7 +95,18 @@ namespace MineSweeper
         #region Methods
         private void StartGame()
 		{
-			throw new NotImplementedException();
+			this.Controls.Clear();
+			this.InitializeComponent();
+			this.CellGrid = new Grid(this, GameMode);
+			this.NumFlags = this.GameMode.NumMines;
+			this.TimeElapsed = 0;
+			this.FlagsBox_TextChanged(null, null);
+			this.FirstClick = true;
+			this.CellGrid.GridSetUp();
+			//https://docs.microsoft.com/en-us/dotnet/desktop/winforms/forms/how-to-position-and-resize?view=netdesktop-5.0
+			Width = this.GameMode.Width * buttonSize + (int)(buttonSize * 1.50);
+			Height = this.GameMode.Height * buttonSize + (int)(buttonSize * 3.5);
+			this.TimerLabel.Location = new Point(this.GameMode.Width * buttonSize - 3 * buttonSize + 15, this.TimerLabel.Location.Y);
 		}
 
 		internal void ClickCell(object Sender, MouseEventArgs e)

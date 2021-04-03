@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MineSweeper.GridCells.Cells;
 using MineSweeper.Difficulty;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace MineSweeper.GridCells
 {
@@ -62,7 +64,7 @@ namespace MineSweeper.GridCells
 		}
         #endregion
         #region Methods
-        internal void CheckWin()
+        internal void CheckForWin()
 		{
 			throw new NotImplementedException();
 		}
@@ -84,12 +86,56 @@ namespace MineSweeper.GridCells
 
 		internal void GridSetUp()
 		{
-			throw new NotImplementedException();
+			this.SetMines();
+			//https://naikrahul.wordpress.com/tricks-tips/c-how-to-add-click-event-for-dynamically-created-buttons/
+			int xBoardLoc = xDefaultLoc, yBoardLoc = yDefaultLoc;
+			for (int index1 = 0; index1 < this.GameMode.Height; index1++)
+			{
+				for (int index2 = 0; index2 < this.GameMode.Width; index2++)
+				{
+					if (!(this.GridOfCells[index2, index1] is Mine))
+					{
+						this.GridOfCells[index2, index1] = new Number(index2, index1, this);
+						this.GridOfCells[index2, index1].Location = new Point(xBoardLoc, yBoardLoc);
+					}
+					xBoardLoc += spaceBetweenButtons;
+				}
+				xBoardLoc = xDefaultLoc;
+				yBoardLoc += spaceBetweenButtons;
+			}
+			this.SetNumbers();
 		}
 
-		internal void SetMines()
+		private void SetMines()
 		{
-			throw new NotImplementedException();
+			//https://docs.microsoft.com/en-us/dotnet/api/system.random?view=net-5.0
+			var rand = new Random();
+			int minesPlaced = 0;
+
+			while (minesPlaced < this.GameMode.NumMines)
+			{
+				int x = rand.Next(0, this.GameMode.Width);
+				int y = rand.Next(0, this.GameMode.Height);
+				//https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/type-testing-and-cast
+				if (!(this.GridOfCells[x, y] is Mine))
+				{
+					this.GridOfCells[x, y] = new Mine(x, y, this);
+					this.GridOfCells[x, y].Location = new Point(x * 30 + 15, y * 30 + 50);
+					minesPlaced++;
+				}
+			}
+		}
+		private void SetNumbers()
+        {
+			foreach (var cell in this.GridOfCells)
+			{
+				if (cell is Number)
+				{
+					//https://stackoverflow.com/questions/57404994/iterate-over-generic-list-with-multiple-types
+					var newCell = (Number)cell;
+					newCell.CalculateMines();
+				}
+			}
 		}
         #endregion
     }
