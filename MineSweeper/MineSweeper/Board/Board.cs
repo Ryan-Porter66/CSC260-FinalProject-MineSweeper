@@ -87,13 +87,18 @@ namespace MineSweeper
         {
 
         }
-        internal void FlagsBox_TextChanged(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
 
         }
+
+        internal void FlagsBox_TextChanged(object sender, EventArgs e)
+        {
+			this.FlagsBox.Text = "Flags: " + this.NumFlags;
+		}
         #endregion
         #region Methods
-        private void StartGame()
+        internal void StartGame()
 		{
 			this.Controls.Clear();
 			this.InitializeComponent();
@@ -109,11 +114,45 @@ namespace MineSweeper
 			this.TimerLabel.Location = new Point(this.GameMode.Width * buttonSize - 3 * buttonSize + 15, this.TimerLabel.Location.Y);
 		}
 
-		internal void ClickCell(object Sender, MouseEventArgs e)
+		internal void ClickCell(object sender, MouseEventArgs e)
 		{
-			throw new NotImplementedException();
+			//https://stackoverflow.com/questions/9450382/visual-c-sharp-form-right-click-button
+			//https://stackoverflow.com/questions/19448346/how-to-get-a-right-click-mouse-event-changing-eventargs-to-mouseeventargs-cause
+			var clickedCell = from Cell item in this.CellGrid.GridOfCells
+							  where item == sender
+							  select item;
+			foreach (Cell cell in clickedCell)
+			{
+				switch (e.Button)
+				{
+					case MouseButtons.Left:
+						if (!(cell.Flagged))
+						{
+							if (FirstClick && cell is Mine)
+							{
+								MessageBox.Show("First click was a mine. Please select again.");
+							}
+							else
+							{
+								FirstClick = false;
+								this.timer1.Start();
+								cell.RevealClick();
+								cell.Enabled = false;
+								this.CellGrid.CheckForWin();
+							}
+						}
+						break;
+					case MouseButtons.Right:
+						if (!(cell.Uncovered))
+						{
+							cell.FlagClick();
+						}
+						break;
+					default:
+						break;
+				}
+			}
 		}
-        #endregion
-
+		#endregion
     }
 }

@@ -29,6 +29,7 @@ namespace MineSweeper
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.difficultyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.easyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,6 +38,7 @@ namespace MineSweeper
             this.highScoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FlagsBox = new System.Windows.Forms.TextBox();
             this.TimerLabel = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +113,10 @@ namespace MineSweeper
             this.TimerLabel.TabStop = false;
             this.TimerLabel.Text = "Time:";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +145,7 @@ namespace MineSweeper
         private System.Windows.Forms.ToolStripMenuItem highScoresToolStripMenuItem;
         private System.Windows.Forms.TextBox FlagsBox;
         private System.Windows.Forms.TextBox TimerLabel;
+        internal System.Windows.Forms.Timer timer1;
     }
 }
 

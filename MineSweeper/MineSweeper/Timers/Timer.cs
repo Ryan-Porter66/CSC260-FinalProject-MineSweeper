@@ -8,7 +8,7 @@ namespace MineSweeper.Timers
 {
     class Timer
     {
-        public static int increaseTimer(int elapsed)
+        public static int IncreaseTimer(int elapsed)
         {
             throw new NotImplementedException();
         }

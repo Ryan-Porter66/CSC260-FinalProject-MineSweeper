@@ -99,7 +99,20 @@ namespace MineSweeper.GridCells.Cells
         #region Methods
 		internal void FlagClick()
 		{
-
+			if (!(this.Flagged) && this.Owner.Board.NumFlags > 0)
+			{
+				this.Text = "?";
+				this.Owner.Board.NumFlags--;
+				this.Owner.Board.FlagsBox_TextChanged(null, null);
+				this.Flagged = !(this.Flagged);
+			}
+			else if (this.Flagged)
+			{
+				this.Text = "";
+				this.Owner.Board.NumFlags++;
+				this.Owner.Board.FlagsBox_TextChanged(null, null);
+				this.Flagged = !(this.Flagged);
+			}
 		}
 
 		public abstract void RevealClick();

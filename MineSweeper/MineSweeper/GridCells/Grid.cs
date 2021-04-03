@@ -66,17 +66,40 @@ namespace MineSweeper.GridCells
         #region Methods
         internal void CheckForWin()
 		{
-			throw new NotImplementedException();
+			var cellsLeft = from Cell cell in GridOfCells
+							where cell.Uncovered == false
+							select cell;
+			if (cellsLeft.Count() == GameMode.NumMines)
+			{
+				GameWon();
+			}
 		}
 
 		private void DisplayMines()
 		{
-			throw new NotImplementedException();
+			var mines = from Cell cell in GridOfCells
+						where cell is Mine && cell.Uncovered == false
+						select cell;
+			foreach (Cell cell in mines)
+			{
+				cell.Text = "M";
+			}
 		}
 
 		internal void GameLost()
 		{
-			throw new NotImplementedException();
+			this.Board.timer1.Stop();
+			this.DisplayMines();
+			const string wonMessage = "You lost! Would you like to play again?";
+			var result = MessageBox.Show(wonMessage, "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (result == DialogResult.Yes)
+			{
+				this.Board.StartGame();
+			}
+			else
+			{
+				Application.Exit();
+			}
 		}
 
 		internal void GameWon()

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace MineSweeper.GridCells.Cells
 {
@@ -32,27 +34,48 @@ namespace MineSweeper.GridCells.Cells
         #region Methods
 		internal void CalculateMines()
         {
-
+            this.NumMines = GetMineNeighbors();
         }
         private void DisplayNeighbors()
 		{
-			throw new NotImplementedException();
-		}
-
-		private int GetMineNeighbors()
+            if (this.NumMines == 0)
+            {
+                foreach (Cell cell in GetNeighbors())
+                {
+                    cell.RevealClick();
+                }
+            }
+        }
+        private List<Cell> GetNeighbors()
+        {
+            var list = from Cell cell in this.Owner.GridOfCells
+                       where (Math.Abs(cell.LocationX - this.LocationX) < 2 && Math.Abs(cell.LocationY - this.LocationY) < 2 && cell.Uncovered == false && cell.Flagged == false)
+                       select cell;
+            return list.ToList();
+        }
+        private int GetMineNeighbors()
 		{
-			throw new NotImplementedException();
-		}
+            var list = from Cell cell in this.Owner.GridOfCells
+                       where (Math.Abs(cell.LocationX - this.LocationX) < 2 && Math.Abs(cell.LocationY - this.LocationY) < 2 && cell is Mine)
+                       select cell;
+            return list.Count();
+        }
 
 		public override void RevealClick()
 		{
-			throw new NotImplementedException();
-		}
+            if (this.NumMines > 0)
+            {
+                this.Text = this.NumMines.ToString();
+            }
+            else
+            {
+                this.Uncovered = true;
+                this.DisplayNeighbors();
+            }
 
-		internal void SetNumberOfMines()
-		{
-			throw new NotImplementedException();
-		}
+            this.BackColor = Color.LightGray;
+            this.Uncovered = true;
+        }
         #endregion
     }
 }
