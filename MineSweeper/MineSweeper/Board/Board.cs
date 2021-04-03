@@ -73,16 +73,23 @@ namespace MineSweeper
         #region Board Buttons
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
+			this.GameMode = new Easy();
+			this.timer1.Stop();
+			//https://www.codeproject.com/Questions/646695/how-to-reload-form-or-refresh-form-in-csharp-net
+			this.StartGame();
+		}
         private void intermediateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
+			this.GameMode = new Intermediate();
+			this.timer1.Stop();
+			this.StartGame();
+		}
         private void expertToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
+			this.GameMode = new Expert();
+			this.timer1.Stop();
+			this.StartGame();
+		}
         private void highScoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
