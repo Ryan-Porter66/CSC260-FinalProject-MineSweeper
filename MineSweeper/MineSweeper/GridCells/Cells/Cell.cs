@@ -94,16 +94,18 @@ namespace MineSweeper.GridCells.Cells
         #region Methods
 		internal void FlagClick()
 		{
+			//https://www.c-sharpcorner.com/uploadfile/mahesh/display-an-image-as-button-background-in-C-Sharp/
+			// got image from https://commons.wikimedia.org/wiki/File:Minesweeper_flag.svg
 			if (!(this.Flagged) && this.Owner.Board.NumFlags > 0)
 			{
-				this.Text = "?";
+				this.Image = (Image)(new Bitmap(Properties.Resources.FlagIcon, new Size(32, 32)));
 				this.Owner.Board.NumFlags--;
 				this.Owner.Board.FlagsBox_TextChanged(null, null);
 				this.Flagged = !(this.Flagged);
 			}
 			else if (this.Flagged)
 			{
-				this.Text = "";
+				this.Image = null;
 				this.Owner.Board.NumFlags++;
 				this.Owner.Board.FlagsBox_TextChanged(null, null);
 				this.Flagged = !(this.Flagged);
