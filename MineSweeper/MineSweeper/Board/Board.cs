@@ -92,8 +92,8 @@ namespace MineSweeper
 		}
         private void highScoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
+			High_Scores.HighScores.DisplayHighScores();
+		}
         private void timer1_Tick(object sender, EventArgs e)
         {
 			//https://docs.microsoft.com/en-us/visualstudio/ide/step-6-add-a-timer?view=vs-2019
