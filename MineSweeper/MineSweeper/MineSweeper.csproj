@@ -52,6 +52,7 @@
     <Compile Include="Board\Board.Designer.cs">
       <DependentUpon>Board.cs</DependentUpon>
     </Compile>
+    <Compile Include="Difficulty\Custom.cs" />
     <Compile Include="Difficulty\Easy.cs" />
     <Compile Include="Difficulty\Expert.cs" />
     <Compile Include="Difficulty\IDifficulty.cs" />

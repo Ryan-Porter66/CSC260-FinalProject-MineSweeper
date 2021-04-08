@@ -35,6 +35,7 @@ namespace MineSweeper
             this.easyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.intermediateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highScoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FlagsBox = new System.Windows.Forms.TextBox();
             this.TimerLabel = new System.Windows.Forms.TextBox();
@@ -58,7 +59,8 @@ namespace MineSweeper
             this.difficultyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.easyToolStripMenuItem,
             this.intermediateToolStripMenuItem,
-            this.expertToolStripMenuItem});
+            this.expertToolStripMenuItem,
+            this.customToolStripMenuItem});
             this.difficultyToolStripMenuItem.Name = "difficultyToolStripMenuItem";
             this.difficultyToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.difficultyToolStripMenuItem.Text = "Difficulty";
@@ -83,6 +85,13 @@ namespace MineSweeper
             this.expertToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.expertToolStripMenuItem.Text = "Expert";
             this.expertToolStripMenuItem.Click += new System.EventHandler(this.expertToolStripMenuItem_Click);
+            // 
+            // customToolStripMenuItem
+            // 
+            this.customToolStripMenuItem.Name = "customToolStripMenuItem";
+            this.customToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.customToolStripMenuItem.Text = "Custom";
+            this.customToolStripMenuItem.Click += new System.EventHandler(this.customToolStripMenuItem_Click);
             // 
             // highScoresToolStripMenuItem
             // 
@@ -122,6 +131,7 @@ namespace MineSweeper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.TimerLabel);
             this.Controls.Add(this.FlagsBox);
@@ -147,6 +157,7 @@ namespace MineSweeper
         private System.Windows.Forms.TextBox FlagsBox;
         private System.Windows.Forms.TextBox TimerLabel;
         protected internal System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem customToolStripMenuItem;
     }
 }
 

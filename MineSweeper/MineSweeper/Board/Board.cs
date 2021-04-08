@@ -84,6 +84,12 @@ namespace MineSweeper
 			this.timer1.Stop();
 			this.StartGame();
 		}
+        private void customToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			this.GameMode = new Custom();
+			this.timer1.Stop();
+			this.StartGame();
+        }
         private void highScoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
 			High_Scores.HighScores.DisplayHighScores();
@@ -101,7 +107,6 @@ namespace MineSweeper
 				this.timer1.Stop();
 			}
 		}
-
         internal void FlagsBox_TextChanged(object sender, EventArgs e)
         {
 			this.FlagsBox.Text = "Flags: " + this.NumFlags;

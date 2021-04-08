@@ -66,10 +66,14 @@ namespace MineSweeper.High_Scores
                     timeString = data[5];
                     index = 5;
                 }
-                else
+                else if (difficulty.Equals("Expert"))
                 {
                     timeString = data[8];
                     index = 8;
+                }
+                else
+                {
+                    return;
                 }
                 if (Int32.Parse(timeString) > time)
                 {
