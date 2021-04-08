@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
-using System.Configuration;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
-using System.Reflection;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace MineSweeper.High_Scores
 {
@@ -43,7 +34,7 @@ namespace MineSweeper.High_Scores
             char pad = ' ';
             for (int index = 0; index < 3; index++)
             {
-                output = output + data[0 + index * 3].PadRight(15, pad) + "\t" + data[1 + index * 3].PadRight(22, pad) + "\t" + data[2 + index * 3].PadRight(5, pad) + "\n";
+                output = output + data[0 + index * 3].PadRight(15, pad) + "\t" + data[1 + index * 3].PadRight(30, pad) + "\t" + data[2 + index * 3].PadRight(5, pad) + "\n";
             }
             MessageBox.Show(output);
         }
@@ -69,11 +60,11 @@ namespace MineSweeper.High_Scores
             }
             if (Int32.Parse(timeString) > time)
             {
-                UpdateTime(difficulty, time, data, index);
+                UpdateTime(time, data, index);
             }
 
         }
-        private static void UpdateTime(string difficulty, int time, string[] data, int index)
+        private static void UpdateTime(int time, string[] data, int index)
         {
             string name = GetNameDialogBox();
             data[index - 1] = name;
