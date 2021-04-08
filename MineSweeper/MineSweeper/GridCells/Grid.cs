@@ -79,7 +79,7 @@ namespace MineSweeper.GridCells
 						select cell;
 			foreach (Cell cell in mines)
 			{
-				cell.Text = "M";
+				cell.Image = (Image)(new Bitmap(Properties.Resources.FlagIcon, new Size(32, 32)));
 			}
 		}
 

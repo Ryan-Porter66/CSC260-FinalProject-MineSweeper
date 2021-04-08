@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace MineSweeper.GridCells.Cells
 {
@@ -16,7 +12,7 @@ namespace MineSweeper.GridCells.Cells
         #region Methods
         public override void RevealClick()
 		{
-            this.Text = "M";
+            this.Image = (Image)(new Bitmap(Properties.Resources.FlagIcon, new Size(32, 32)));
             this.Owner.GameLost();
         }
         #endregion
