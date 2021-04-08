@@ -34,7 +34,18 @@ namespace MineSweeper.High_Scores
             char pad = ' ';
             for (int index = 0; index < 3; index++)
             {
-                output = output + data[0 + index * 3].PadRight(15, pad) + "\t" + data[1 + index * 3].PadRight(30, pad) + "\t" + data[2 + index * 3].PadRight(5, pad) + "\n";
+                try
+                {
+                    output = output + data[0 + index * 3].PadRight(15, pad) + "\t" + data[1 + index * 3].PadRight(30, pad) + "\t" + data[2 + index * 3].PadRight(5, pad) + "\n";
+                }
+                catch
+                {
+                    //incase something was wrong in the original text file, replace all text and get new values
+                    string fileData = "Easy\nN/A\n999\nIntermediate\nN/A\n999\nExpert\nN/A\n999";
+                    File.WriteAllText(GetPath(), fileData);
+                    data = File.ReadAllLines(GetPath());
+                    output = output + data[0 + index * 3].PadRight(15, pad) + "\t" + data[1 + index * 3].PadRight(30, pad) + "\t" + data[2 + index * 3].PadRight(5, pad) + "\n";
+                }
             }
             MessageBox.Show(output);
         }
@@ -43,26 +54,34 @@ namespace MineSweeper.High_Scores
             string[] data = File.ReadAllLines(GetPath());
             string timeString;
             int index;
-            if (difficulty.Equals("Easy"))
+            try
             {
-                timeString = data[2];
-                index = 2;
+                if (difficulty.Equals("Easy"))
+                {
+                    timeString = data[2];
+                    index = 2;
+                }
+                else if (difficulty.Equals("Intermediate"))
+                {
+                    timeString = data[5];
+                    index = 5;
+                }
+                else
+                {
+                    timeString = data[8];
+                    index = 8;
+                }
+                if (Int32.Parse(timeString) > time)
+                {
+                    UpdateTime(time, data, index);
+                }
             }
-            else if (difficulty.Equals("Intermediate"))
+            catch
             {
-                timeString = data[5];
-                index = 5;
+                MessageBox.Show("Something went wrong when checking the scores. Your score will not be updated to file.");
+                string fileData = "Easy\nN/A\n999\nIntermediate\nN/A\n999\nExpert\nN/A\n999";
+                File.WriteAllText(GetPath(), fileData);
             }
-            else
-            {
-                timeString = data[8];
-                index = 8;
-            }
-            if (Int32.Parse(timeString) > time)
-            {
-                UpdateTime(time, data, index);
-            }
-
         }
         private static void UpdateTime(int time, string[] data, int index)
         {
