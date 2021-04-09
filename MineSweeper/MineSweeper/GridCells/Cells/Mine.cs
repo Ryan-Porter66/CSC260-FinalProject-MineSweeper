@@ -12,7 +12,7 @@ namespace MineSweeper.GridCells.Cells
         #region Methods
         public override void RevealClick()
 		{
-            this.Image = (Image)(new Bitmap(Properties.Resources.FlagIcon, new Size(32, 32)));
+            this.BackColor = Color.Red;
             this.Owner.GameLost();
         }
         #endregion

@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="High Scores\HighScoresData.txt" />
+    <None Include="Resources\MineImage.png" />
     <None Include="Resources\FlagIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
