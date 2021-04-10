@@ -12,6 +12,7 @@ namespace MineSweeper.GridCells.Cells
         #region Methods
         public override void RevealClick()
 		{
+            //turn the cell red with the mine that was clicked
             this.BackColor = Color.Red;
             this.Owner.GameLost();
         }

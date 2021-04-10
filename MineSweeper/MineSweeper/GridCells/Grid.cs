@@ -63,6 +63,7 @@ namespace MineSweeper.GridCells
         #region Methods
         internal void CheckForWin()
 		{
+			//win by clicking all nonmine cells
 			var cellsLeft = from Cell cell in GridOfCells
 							where cell.Uncovered == false
 							select cell;
@@ -74,6 +75,8 @@ namespace MineSweeper.GridCells
 
 		private void DisplayMines()
 		{
+			//image from https://thenounproject.com/term/mine/
+			//displays all mines to the screen at end of game
 			var mines = from Cell cell in GridOfCells
 						where cell is Mine && cell.Uncovered == false
 						select cell;
@@ -101,7 +104,6 @@ namespace MineSweeper.GridCells
 
 		internal void GameWon()
 		{
-			//https://docs.microsoft.com/en-us/dotnet/api/system.type.equals?view=net-5.0
 			//https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.messageboxbuttons?view=net-5.0
 			this.Board.timer1.Stop();
 			High_Scores.HighScores.CheckForNewHS(this.GameMode.GetType().Name, this.Board.TimeElapsed);

@@ -14,6 +14,7 @@ namespace MineSweeper.Difficulty
         #region Constructor
         public Custom()
         {
+            //gets the height, width, and number of mines from the player
             this.Height = getIntValue("Please enter the height of the board (range of 1-50).");
             this.Width = getIntValue("Please enter the width of the board (range of 8-50).");
             this.NumMines = getIntValue("Please enter the number of mines.");
@@ -28,6 +29,7 @@ namespace MineSweeper.Difficulty
             }
             set
             {
+                //max value of 50 or min of value 1; anything over 50 causes lag
                 if(value > 50 || value < 1)
                 {
                     this._height = 25;
@@ -46,6 +48,7 @@ namespace MineSweeper.Difficulty
             }
             set
             {
+                //max value of 50 or min value of 8; anything over 50 causes lag
                 if(value > 50 || value < 8)
                 {
                     this._width = 25;
@@ -63,6 +66,7 @@ namespace MineSweeper.Difficulty
             }
             set
             {
+                //there has to be at least 1 mine, or has to less than total number of squares
                 if(value >= this._width * this._height || value < 1)
                 {
                     this._numMines = this._width * this._height - 1;
@@ -76,6 +80,7 @@ namespace MineSweeper.Difficulty
         #region Methods
         private int getIntValue(string displayString)
         {
+            //prints new form to the screen asking for what is in the displayString
             //https://stackoverflow.com/questions/5427020/prompt-dialog-in-windows-forms
             Form name = new Form();
             name.Size = new Size(250, 150);
@@ -99,6 +104,7 @@ namespace MineSweeper.Difficulty
 
             if (name.ShowDialog() == DialogResult.OK)
             {
+                //if number could not be turned into an integer, return 25 (mid value)
                 try
                 {
                     int returnValue = Int32.Parse(input.Text);

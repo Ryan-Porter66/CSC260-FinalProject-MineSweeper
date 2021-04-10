@@ -59,7 +59,8 @@ namespace MineSweeper
 		#region Constructor
 		public Board()
 		{
-			InitializeComponent();
+            InitializeComponent();
+			//standard difficulty is easy
 			this.GameMode = new Easy();
 			this.StartGame();
 		}
@@ -69,7 +70,6 @@ namespace MineSweeper
         {
 			this.GameMode = new Easy();
 			this.timer1.Stop();
-			//https://www.codeproject.com/Questions/646695/how-to-reload-form-or-refresh-form-in-csharp-net
 			this.StartGame();
 		}
         private void intermediateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,11 +92,13 @@ namespace MineSweeper
         }
         private void highScoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
+			//calls function in HighScores class
 			High_Scores.HighScores.DisplayHighScores();
 		}
         private void timer1_Tick(object sender, EventArgs e)
         {
 			//https://docs.microsoft.com/en-us/visualstudio/ide/step-6-add-a-timer?view=vs-2019
+			//max time is 999 seconds
 			if (this.TimeElapsed < 999)
 			{
 				this.TimeElapsed = Timers.Timer.IncreaseTimer(this.TimeElapsed);
@@ -104,17 +106,20 @@ namespace MineSweeper
 			}
 			else
 			{
+				//if 999 seconds has passed, stop the timer
 				this.timer1.Stop();
 			}
 		}
         internal void FlagsBox_TextChanged(object sender, EventArgs e)
         {
+			//displays the number of flags left
 			this.FlagsBox.Text = "Flags: " + this.NumFlags;
 		}
         #endregion
         #region Methods
         internal void StartGame()
 		{
+			//https://www.codeproject.com/Questions/646695/how-to-reload-form-or-refresh-form-in-csharp-net
 			this.Controls.Clear();
 			this.InitializeComponent();
 			this.CellGrid = new Grid(this, GameMode);
@@ -143,6 +148,8 @@ namespace MineSweeper
 					case MouseButtons.Left:
 						if (!(cell.Flagged))
 						{
+							//instead of moving the mine, just tell the user they clicked a mine
+							//not the best way to do it, but it works
 							if (FirstClick && cell is Mine)
 							{
 								MessageBox.Show("First click was a mine. Please select again.");
@@ -153,6 +160,7 @@ namespace MineSweeper
 								this.timer1.Start();
 								cell.RevealClick();
 								cell.Enabled = false;
+								//check for win after each click
 								this.CellGrid.CheckForWin();
 							}
 						}

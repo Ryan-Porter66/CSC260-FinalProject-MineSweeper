@@ -12,12 +12,14 @@ namespace MineSweeper.High_Scores
         {
             //https://stackoverflow.com/questions/13762338/read-files-from-a-folder-present-in-project
             //https://stackoverflow.com/questions/5606747/how-to-get-application-path
+            //gets the path of where the high score file should be, and calls a function to make sure file exists
             string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
             return CheckIfFileExists(Path.Combine(projectDirectory, @"High Scores\HighScoresData.txt"));
         }
         private static string CheckIfFileExists(string filePath)
         {
             //https://stackoverflow.com/questions/2781357/file-being-used-by-another-process-after-using-file-create
+            //create file if it does not exist
             if (!(File.Exists(filePath)))
             {
                 File.Create(filePath).Close();

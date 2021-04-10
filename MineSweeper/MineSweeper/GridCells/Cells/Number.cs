@@ -35,6 +35,7 @@ namespace MineSweeper.GridCells.Cells
         }
         private void DisplayNeighbors()
 		{
+            //displays all neighbors of a cell with no mines around it
             if (this.NumMines == 0)
             {
                 foreach (Cell cell in GetNeighbors())
@@ -45,6 +46,7 @@ namespace MineSweeper.GridCells.Cells
         }
         private List<Cell> GetNeighbors()
         {
+            //gets the cell list from around this cell
             var list = from Cell cell in this.Owner.GridOfCells
                        where (Math.Abs(cell.LocationX - this.LocationX) < 2 && Math.Abs(cell.LocationY - this.LocationY) < 2 && cell.Uncovered == false && cell.Flagged == false)
                        select cell;
@@ -52,6 +54,7 @@ namespace MineSweeper.GridCells.Cells
         }
         private int GetMineNeighbors()
 		{
+            //returns number of mines around this cell
             var list = from Cell cell in this.Owner.GridOfCells
                        where (Math.Abs(cell.LocationX - this.LocationX) < 2 && Math.Abs(cell.LocationY - this.LocationY) < 2 && cell is Mine)
                        select cell;
