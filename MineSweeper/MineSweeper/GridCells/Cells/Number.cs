@@ -60,7 +60,6 @@ namespace MineSweeper.GridCells.Cells
                        select cell;
             return list.Count();
         }
-
 		public override void RevealClick()
 		{
             if (this.NumMines > 0)
