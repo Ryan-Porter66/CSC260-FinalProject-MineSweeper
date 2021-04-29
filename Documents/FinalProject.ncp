@@ -1,0 +1,240 @@
+<Project>
+  <Name>FinalProject</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>MineSweeper</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Board</Name>
+        <Access>Public</Access>
+        <Location left="650" top="140" />
+        <Size width="293" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Grid _grid</Member>
+        <Member type="Field">IDifficulty _gameMode</Member>
+        <Member type="Field">private int _numFlags</Member>
+        <Member type="Property">public Grid CellGrid { get; private set; }</Member>
+        <Member type="Property">public IDifficulty GameMode { get; set; }</Member>
+        <Member type="Property">public int NumFlags { get; set; }</Member>
+        <Member type="Constructor">public Board()</Member>
+        <Member type="Method">internal void StartGame()</Member>
+        <Member type="Method">internal void ClickCell(object Sender, MouseEventArgs e)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Grid</Name>
+        <Access>Public</Access>
+        <Location left="650" top="491" />
+        <Size width="293" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Board _board</Member>
+        <Member type="Field">IDifficulty _gameMode</Member>
+        <Member type="Field">Cell[,] _grid</Member>
+        <Member type="Property">public Board Board { get; set; }</Member>
+        <Member type="Property">public IDifficulty GameMode { get; set; }</Member>
+        <Member type="Property">public Cell[,] GridOfCells { get; set; }</Member>
+        <Member type="Constructor">public Grid(Board board, IDifficulty difficulty)</Member>
+        <Member type="Method">internal void CheckForWin()</Member>
+        <Member type="Method">private void DisplayMines()</Member>
+        <Member type="Method">internal void GameLost()</Member>
+        <Member type="Method">internal void GameWon()</Member>
+        <Member type="Method">internal void GridSetUp()</Member>
+        <Member type="Method">private void SetMines()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Cell</Name>
+        <Access>Public</Access>
+        <Location left="650" top="836" />
+        <Size width="293" height="315" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">bool _flagged</Member>
+        <Member type="Field">int _locationX</Member>
+        <Member type="Field">int _locationY</Member>
+        <Member type="Field">Grid _owner</Member>
+        <Member type="Field">bool _uncovered</Member>
+        <Member type="Property">public bool Flagged { get; set; }</Member>
+        <Member type="Property">public int LocationX { get; set; }</Member>
+        <Member type="Property">public int LocationY { get; set; }</Member>
+        <Member type="Property">public Grid Owner { get; set; }</Member>
+        <Member type="Property">public bool Uncovered { get; set; }</Member>
+        <Member type="Constructor">public Cell(int x, int y, Grid owner)</Member>
+        <Member type="Method">internal void FlagClick()</Member>
+        <Member type="Method">public abstract void RevealClick()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Mine</Name>
+        <Access>Public</Access>
+        <Location left="506" top="1286" />
+        <Size width="228" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public Mine(int x, int y, Grid owner)</Member>
+        <Member type="Method">public override void RevealClick()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Number</Name>
+        <Access>Public</Access>
+        <Location left="834" top="1286" />
+        <Size width="225" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int _numMines</Member>
+        <Member type="Property">public int NumMines { get; set; }</Member>
+        <Member type="Constructor">public Number(int x, int y, Grid owner)</Member>
+        <Member type="Method">private void DisplayNeighbors()</Member>
+        <Member type="Method">private int GetMineNeighbors()</Member>
+        <Member type="Method">public override void RevealClick()</Member>
+        <Member type="Method">internal void CalculateMines()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IDifficulty</Name>
+        <Access>Public</Access>
+        <Location left="1006" top="140" />
+        <Size width="162" height="175" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">int Width { get; }</Member>
+        <Member type="Property">int Height { get; }</Member>
+        <Member type="Property">int NumMine { get; }</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>Easy</Name>
+        <Access>Public</Access>
+        <Location left="1289" top="52" />
+        <Size width="162" height="105" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Intermediate</Name>
+        <Access>Public</Access>
+        <Location left="1291" top="199" />
+        <Size width="162" height="116" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Expert</Name>
+        <Access>Public</Access>
+        <Location left="1289" top="358" />
+        <Size width="162" height="97" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Timer</Name>
+        <Access>Public</Access>
+        <Location left="294" top="436" />
+        <Size width="194" height="108" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static int IncreaseTimer(int elapsed)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>High_Score</Name>
+        <Access>Public</Access>
+        <Location left="240" top="140" />
+        <Size width="277" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void DisplayHighScores()</Member>
+        <Member type="Method">public static void CheckForNewHS(string difficulty, int time)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>947</X>
+          <Y>1258</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>796</X>
+          <Y>1179</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>799</X>
+          <Y>803</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>969</X>
+          <Y>245</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="6" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="7" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1193</X>
+          <Y>228</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="8" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1228</X>
+          <Y>355</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1197</X>
+          <Y>228</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="0" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>625</X>
+          <Y>289</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
